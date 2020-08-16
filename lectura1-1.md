@@ -1,12 +1,12 @@
-##Summary
+## Summary 
 The paper presents a new method to recommend items to users using an item based CF instead of user based. The former tries to first find the nearest neighbours to a user and predict ratings according to the other user's ratings. Item based, on the other hand, first finds the most similar items by using correlation with ratings by other users and then can compute an estimate of the rating of the item by using the average of the user's ratings on the most similar items. This both solves the spasticity and scalability problems of user-based by finding first the most similar items instead of the "most similar users". 
 
-##Interesting ideas
+## Interesting ideas
 What I found interesting about this method and that they point out, relationship between items are static, this is, if one item is similar to the other than it won't change, which is not the case with users that can change opinions rapidly. Given this, you only have to compute the most similar items once and not every time you want to give recommendations increasing performance speed. Also, you don't have to do an all-to-all similarity comparison, since you only need *k << n* to compute a highly accurate estimation, saving space and computation speed. 
 There's a quality tradeoff between performance and model size, but since the most similar items contribute the most to the prediction the estimate is good and fast enough to outweigh quality loss.
 
-##Results
+## Results##
 As expected the item based still provided really good results even with a small model size (k) and performed much better in time required to compute predictions.
 
-##Proposals
+## Proposals##
 One thing that the paper does not dive into is how, while calculating the estimated rating for an item *i*, the rating of the same user for the item *j* is taken into account. It does mention that considering the *k* most similar items, the model only takes into account the items that the user has purchased (I guess seen in the case of movies), but taking for example the case of movies, the user hasn't necessarily rated the movie. You can derive implicitly to estimate the rating but the paper does not mention it. Also, the experiment filters the dataset to users that have rated 20+ movies, which in my opinion is quite high (I rarely give ratings), so leaves the question in hand as to how the model performs in more passive users. Again, this opens the opportunity to discuss methods to calculate ratings implicitly and merge this method to predict recommendations. 
