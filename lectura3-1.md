@@ -10,5 +10,5 @@ In the results,  PureSVD outperforms propro RMSE trained algorithms, validating 
 
 My criticism with the results and test methodology would be that the authors present their preferred algorithm PureSVD with specific values of latent factors, but the other common algorithms with different latent factors. Some suspicion rises as to why the authors chose those values and it seems that they tuned them before the actual tests to achieve the best results compared to other algorithms, so that it validates their point beforehand. 
 
-##Final Ideas
+## Final Ideas
 Some improvements I see could be analyzing how to better fill out missing values in the training set and not simply filling with zeros since this is not a very accurate prediction of reality and the algorithm could give too much importance to misleading data. Maybe they could include some type of regularization step, such as selecting at the beginning of each iteration only a certain number of these values to take part in training, and changing them in each iteration so the algorithm doesn’t overfit to them.
