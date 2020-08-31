@@ -3,10 +3,11 @@ Sometimes in recommender systems we don’t want to recommend a complete list of
 
 ## Testing and metric
 The method to evaluate the results of different algorithms is a little bit confusing for me as to why they chose it like this. They calculate recall and precision according to the number of hits on a test set, where a hit would be having the high scored test item inside the top-N recommended list of the user. I believe this could have improvements, or rather avoid ambiguous results if they also consider the position p of the test item inside that list. As stated in the paper, the “best result corresponds to p=1 where the item is in the top of the list”, but the presented test methodology doesn’t take this into account and in this case two different algorithms with an average high and low value of p can score the same. In this sense, maybe it would be interesting to order the top-N recommended list with a confidence value, recommending the most confident items first and finding a metric that evaluates this accordingly. 
+
 Looking at the test set, I find it interesting separating the test set between tail and head, comparing how the models change performance with items with high or low number of ratings, reducing bias towards non personalized algorithms.
 
 ## Results
-In the results,  PureSVD outperforms propro RMSE trained algorithms, validating their hypothesis and the reason that they give is that the latter are trained and tested towards rated items, not considering the whole dataset.
+In the results,  PureSVD outperforms common RMSE trained algorithms, validating their hypothesis and the reason that they give is that the latter are trained and tested towards rated items, not considering the whole dataset.
 
 My criticism with the results and test methodology would be that the authors present their preferred algorithm PureSVD with specific values of latent factors, but the other common algorithms with different latent factors. Some suspicion rises as to why the authors chose those values and it seems that they tuned them before the actual tests to achieve the best results compared to other algorithms, so that it validates their point beforehand. 
 
